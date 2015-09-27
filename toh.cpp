@@ -4,6 +4,7 @@
 #include<iostream>
 
 using namespace std;
+void konfirm();
 
 struct node1
 {
@@ -138,73 +139,8 @@ int ambil3()
     }
 }
 
-void MenaraHanoi(int N, char asal, char bantu, char tujuan);
-
-int main()
-
-{
-	char jawaban;
-	
-	cout<<"=========PROGRAM MENARA HANOI=========\n\n";
-    cout<<setw(25)<<"Dibuat oleh:\n";
-    cout<<"Dedy Van Hauten \t(1400910039)\n";
-    cout<<"Jordy Cahyo Elalno \t(1400910024)\n";
-    cout<<"Richard Nathaniel C \t(1400910015)\n\n";
-
-    int piringan,i;
-
-    cout<< "\nPROGRAM MENARA HANOI\n";
-
-    cout<< "Masukkan banyaknya piringan: ";
-
-    scanf("%d",&piringan);
-    
-    if(cin.fail()){
-    	cin.clear();
-    	cin.ignore();
-    	system("cls");
-    	
-    	cout<<"Input Hanya Boleh Angka! \n";
-    	main();
-    	
-    } else
-    { if(piringan<3){
-    	cin.clear();
-    	cin.ignore();
-    	system("cls");
-    	
-    	cout<<"Input Tidak Boleh Kurang Dari 3 \n";
-    	main();
-    }
-    }
-
-    cout<< endl;
-    
-    for (i = piringan; i >= 1; i--)
-    {
-        inputawal(i);
-    } 
-
-    MenaraHanoi(piringan,'A','B','C');
-    
-	cout<<"Tekan Y untuk kembali ke Awal, tekan yang lain untuk mengakhiri program  ";
-	cin>>jawaban;
-    if(jawaban == 'y' || jawaban == 'Y')
-    {
-    	system("cls");
-    	main();
-    } else{
-    	exit(EXIT_SUCCESS);
-    }
-
-    return 0;
-
-}
-
 void MenaraHanoi(int N, char asal, char bantu, char tujuan)
-
 {
-
     if(N == 1)
 	{
 		cout<<"Piringan "<<N;
@@ -247,3 +183,56 @@ void MenaraHanoi(int N, char asal, char bantu, char tujuan)
     }
 }
 
+int main()
+
+{
+	char jawaban;
+	
+	cout<<"=========PROGRAM MENARA HANOI=========\n\n";
+    cout<<setw(25)<<"Dibuat oleh:\n";
+    cout<<"Dedy Van Hauten \t(1400910039)\n";
+    cout<<"Jordy Cahyo Elalno \t(1400910024)\n";
+    cout<<"Richard Nathaniel C \t(1400910015)\n\n";
+
+    int piringan,i;
+
+    cout<< "\nPROGRAM MENARA HANOI\n";
+
+    cout<< "Masukkan banyaknya piringan: ";
+
+    cin>>piringan;
+    if (cin.good()){
+	    for (i = piringan; i >= 1; i--)
+	    {
+	        inputawal(i);
+	    } 
+	
+	    MenaraHanoi(piringan,'A','B','C');
+	    
+		konfirm();
+		
+	    return 0;
+    } else {
+    	cin.clear();
+    	cin.ignore();
+    	system("cls");
+    	
+    	cout<<"Input Hanya Boleh Angka! \n";
+    	konfirm();
+    }
+}
+
+void konfirm()
+{
+	char jawaban;
+	cout<<"Tekan Y untuk kembali ke Awal, tekan yang lain untuk mengakhiri program  ";
+	cin>>jawaban;
+    if(jawaban == 'y' || jawaban == 'Y')
+    {
+    	system("cls");
+		main();
+    } else{
+	exit(EXIT_SUCCESS);
+    }
+	
+}
