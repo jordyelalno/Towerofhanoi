@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<iomanip>
 #include<iostream>
+#include<string>
 
 using namespace std;
 void konfirm();
@@ -187,38 +188,41 @@ int main()
 
 {
 	char jawaban;
+	string input;
+	int piringan;
 	
 	cout<<"=========PROGRAM MENARA HANOI=========\n\n";
     cout<<setw(25)<<"Dibuat oleh:\n";
     cout<<"Dedy Van Hauten \t(1400910039)\n";
     cout<<"Jordy Cahyo Elalno \t(1400910024)\n";
     cout<<"Richard Nathaniel C \t(1400910015)\n\n";
-
-    int piringan,i;
-
-    cout<< "\nPROGRAM MENARA HANOI\n";
+	cout<< "\nPROGRAM MENARA HANOI\n";
 
     cout<< "Masukkan banyaknya piringan: ";
 
-    cin>>piringan;
-    if (cin.good()){
-	    for (i = piringan; i >= 1; i--)
+    getline(cin,input);
+    for (int i=0;i<input.length();i++)
+    {
+    	if ((input[i] != '1')&&(input[i] != '2')&&(input[i] != '3')&&(input[i] != '4')&&(input[i] != '5')&&(input[i] != '6')&&(input[i] != '7')&&(input[i] != '8')&&(input[i] != '9')&&(input[i] != '0'))
+    	{
+    		cout<<"Input harus berupa bilangan bulat"<<endl;
+    		konfirm();
+    	}
+    }
+    piringan =atoi(input.c_str());
+    if (piringan<3) {cout<<"Input harus lebih besar dari 2"<<endl;}
+    else
+    {
+	    for (int j = piringan; j >= 1; j--)
 	    {
-	        inputawal(i);
+	        inputawal(j);
 	    } 
-	
+		
 	    MenaraHanoi(piringan,'A','B','C');
 	    
 		konfirm();
 		
 	    return 0;
-    } else {
-    	cin.clear();
-    	cin.ignore();
-    	system("cls");
-    	
-    	cout<<"Input Hanya Boleh Angka! \n";
-    	konfirm();
     }
 }
 
