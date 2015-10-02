@@ -184,30 +184,33 @@ void MenaraHanoi(int N, char asal, char bantu, char tujuan)
     }
 }
 
-int main()
-
+void header()
 {
-	char jawaban;
-	string input;
-	int piringan;
-	
 	cout<<"=========PROGRAM MENARA HANOI=========\n\n";
     cout<<setw(25)<<"Dibuat oleh:\n";
     cout<<"Dedy Van Hauten \t(1400910039)\n";
     cout<<"Jordy Cahyo Elalno \t(1400910024)\n";
     cout<<"Richard Nathaniel C \t(1400910015)\n\n";
 	cout<< "\nPROGRAM MENARA HANOI\n";
+}
 
+int main()
+{
+	char jawaban;
+	string input;
+	int piringan;
+	
+	jalan :
+	header();
     cout<< "Masukkan banyaknya piringan: ";
-
-    getline(cin,input);
+        getline(cin,input);
     for (int i=0;i<input.length();i++)
     {
     	if ((input[i] != '1')&&(input[i] != '2')&&(input[i] != '3')&&(input[i] != '4')&&(input[i] != '5')&&(input[i] != '6')&&(input[i] != '7')&&(input[i] != '8')&&(input[i] != '9')&&(input[i] != '0'))
     	{
     		cout<<"Input harus berupa bilangan bulat"<<endl;
-    		konfirm();
-    	}
+		goto jalan;
+   	}
     }
     piringan =atoi(input.c_str());
     if (piringan<3) {cout<<"Input harus lebih besar dari 2"<<endl;}
@@ -219,24 +222,16 @@ int main()
 	    } 
 		
 	    MenaraHanoi(piringan,'A','B','C');
-	    
-		konfirm();
-		
-	    return 0;
-    }
-}
-
-void konfirm()
-{
-	char jawaban;
-	cout<<"Tekan Y untuk kembali ke Awal, tekan yang lain untuk mengakhiri program  ";
+	    cout<<"Tekan Y untuk kembali ke Awal, tekan yang lain untuk mengakhiri program  ";
 	cin>>jawaban;
-    if(jawaban == 'y' || jawaban == 'Y')
-    {
-    	system("cls");
-		main();
-    } else{
-	exit(EXIT_SUCCESS);
+   	if(jawaban == 'y' || jawaban == 'Y')
+    	{
+    		system("cls");
+		getline(cin,input);
+		goto jalan;
+    	} else{
+		exit(EXIT_SUCCESS);
+    	}
     }
-	
+	return 0;
 }
