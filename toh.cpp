@@ -208,12 +208,13 @@ int main()
     {
     	if ((input[i] != '1')&&(input[i] != '2')&&(input[i] != '3')&&(input[i] != '4')&&(input[i] != '5')&&(input[i] != '6')&&(input[i] != '7')&&(input[i] != '8')&&(input[i] != '9')&&(input[i] != '0'))
     	{
-    		cout<<"Input harus berupa bilangan bulat"<<endl;
+    		system("cls");
+    		cout<<"Input harus berupa bilangan bulat!"<<endl<<endl;
 		goto jalan;
    	}
     }
     piringan =atoi(input.c_str());
-    if (piringan<3) {cout<<"Input harus lebih besar dari 2"<<endl;}
+    if (piringan<3) {system("cls"); cout<<"Input harus lebih besar dari 2"<<endl; goto jalan;}
     else
     {
 	    for (int j = piringan; j >= 1; j--)
